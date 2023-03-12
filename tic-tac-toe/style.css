@@ -9,11 +9,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-.board {
     width: 100vw;
     height: 100vh;
+    background-color: grey;
+  }
+
+h1{
+    padding: 25px;
+}
+
+.board {
     display: grid;
     justify-content: center;
     align-content: center;
@@ -86,7 +91,7 @@ body {
 .cell.circle::after{
     width: 63px;
     height: 63px;
-    background-color: white;
+    background-color: grey;
 }
 
 .winning-message{
