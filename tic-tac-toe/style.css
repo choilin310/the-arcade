@@ -1,17 +1,17 @@
 *{
     box-sizing: border-box;
-}
-
-#titleName{
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-}
-
-body{
     margin: 0;
+    padding: 0;
 }
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-.board{
+.board {
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -19,19 +19,16 @@ body{
     align-content: center;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, auto)
 }
 
-.cell{
+.cell {
     width: 100px;
     height: 100px;
     border: 1px solid black;
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 60px;
-    font-weight: bold;
+    align-items: center; 
     position: relative;
     cursor: pointer;
 }
@@ -56,13 +53,49 @@ body{
     border-bottom: none;
 }
 
-.fadingScreen{
+.cell.cross::before,
+.cell.cross::after {
+    content: '';
+    position: absolute;
+    width: 13.5px;
+    height: 90px;
+    background-color: black;
+}
+
+.cell.cross::before{
+    transform: rotate(45deg);
+}
+
+.cell.cross::after{
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.cell.circle::before{
+    width: 90px;
+    height: 90px;
+    background-color: black;
+}
+
+.cell.circle::after{
+    width: 63px;
+    height: 63px;
+    background-color: white;
+}
+
+.winning-message{
     display: none;
-    position: fixed;
+    position:fixed;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     background-color: rgba(0, 0, 0, .9);
     justify-content: center;
     align-items: center;
@@ -71,7 +104,7 @@ body{
     flex-direction: column;
 }
 
-.fadingScreen button{
+.winning-message button{
     font-size: 3rem;
     background-color: white;
     border: 1px solid black;
@@ -79,9 +112,12 @@ body{
     cursor: pointer;
 }
 
-.fadingScreen button:hover{
-    background-color: black;
-    color: white;
-    border-color: white;
+.winning-message button:hover{
+     background-color: black;
+     color: white;
+     border-color: white;
 }
 
+.winning-message.show{
+    display: flex;
+}
