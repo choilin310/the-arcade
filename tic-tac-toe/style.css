@@ -16,6 +16,8 @@ body {
 
 h1{
     padding: 25px;
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .board {
@@ -94,35 +96,40 @@ h1{
     background-color: grey;
 }
 
-.winning-message{
-    display: none;
-    position:fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .9);
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 5rem;
-    flex-direction: column;
-}
-
-.winning-message button{
-    font-size: 3rem;
+.restartButton button {
+    font-size: 1rem;
     background-color: white;
     border: 1px solid black;
     padding: .25em .5em;
     cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+}
+  
+.restartButton button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
 }
 
-.winning-message button:hover{
-     background-color: black;
-     color: white;
-     border-color: white;
-}
-
-.winning-message.show{
+#playerBox{
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+#submitNames{
+    font-size: 1rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25em .5em;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.submitNames button:hover{
+    background-color: black;
+    color: white;
+    border-color: white;
 }

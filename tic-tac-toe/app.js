@@ -7,7 +7,24 @@ let gameState = [
 let player = 1;
 let  gameOver = false;
 
+
 const cellElements = document.querySelectorAll(".cell")
+const resultElement = document.getElementById("result")
+const player1NameElement = document.getElementById("player1");
+const player2NameElement = document.getElementById("player2");
+const submitNamesButton = document.getElementById("submitNames");
+const player1NameDisplayElement = document.getElementById("player1NameDisplay");
+const player2NameDisplayElement = document.getElementById("player2NameDisplay");
+
+let player1Name = "";
+let player2Name = "";
+
+submitNamesButton.addEventListener("click", () => {
+  player1Name = player1NameElement.value;
+  player2Name = player2NameElement.value;
+  player1NameDisplayElement.innerText = player1Name;
+  player2NameDisplayElement.innerText = player2Name;
+});
 
 //Event Listener
 cellElements.forEach((cell, index) => {
@@ -16,6 +33,7 @@ cellElements.forEach((cell, index) => {
   })
 }) 
 
+//function to indicate what your clicking on
 function placeMarker(index){
   let col = index % 3
   let row = (index - col) / 3
@@ -27,6 +45,7 @@ function placeMarker(index){
   }
 }
 
+//Function to apply the correct markers
 function drawMarkers(){
   for (let row = 0; row < 3; row++){
     for (let col = 0; col < 3; col++){
@@ -39,6 +58,7 @@ function drawMarkers(){
   }
 }
 
+//Checking the results
 function checkResults(){
   for (let i = 0; i < 3; i++){
     let rowSum = gameState[i][0] +  gameState[i][1] + gameState[i][2];
@@ -68,12 +88,36 @@ function checkResults(){
       }
 }
 
+//Ending the Game
 function endGame(winner){
   gameOver = true;
-  const resultElement = document.getElementById("result")
   if(winner == 0){
     resultElement.innerText = "It's a Tie" 
   }else {
-    resultElement.innerText = `Player ${winner} wins!`
+    resultElement.innerText = `${winner === 1 ? player1Name : player2Name} wins!`
   }
 }
+
+//Restart Game
+const restartButton = document.getElementById("restartButton")
+
+restartButton.addEventListener("click", () => {
+  gameState = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+  ]
+  player = 1;
+  gameOver = false;
+
+  cellElements.forEach(cell => {
+    cell.classList.remove("cross", "circle")
+  })
+  resultElement.innerText = ""
+  player1Name = "";
+  player2Name = "";
+  player1NameDisplayElement.innerText = "";
+  player2NameDisplayElement.innerText = "";
+  player1NameElement.value = "";
+  player2NameElement.value = "";
+})
