@@ -3,9 +3,12 @@ let gameState = [
   [0, 0, 0],
   [0, 0, 0],
 ]
-
-let player = 1;
+var randomNumber = Math.random() * 2;
+// const players = [-1,1]
+let player = randomNumber < 1 ? -1 : 1;
 let  gameOver = false;
+
+// const randomPlayer = players[Math.floor(Math.random() * players.length)]
 
 
 const cellElements = document.querySelectorAll(".cell")
@@ -13,8 +16,6 @@ const resultElement = document.getElementById("result")
 const player1NameElement = document.getElementById("player1");
 const player2NameElement = document.getElementById("player2");
 const submitNamesButton = document.getElementById("submitNames");
-const player1NameDisplayElement = document.getElementById("player1NameDisplay");
-const player2NameDisplayElement = document.getElementById("player2NameDisplay");
 
 let player1Name = "";
 let player2Name = "";
@@ -22,8 +23,6 @@ let player2Name = "";
 submitNamesButton.addEventListener("click", () => {
   player1Name = player1NameElement.value;
   player2Name = player2NameElement.value;
-  player1NameDisplayElement.innerText = player1Name;
-  player2NameDisplayElement.innerText = player2Name;
 });
 
 //Event Listener
@@ -107,7 +106,8 @@ restartButton.addEventListener("click", () => {
     [0, 0, 0],
     [0, 0, 0],
   ]
-  player = 1;
+  player = randomNumber < 1 ? -1 : 1;
+  console.log(player);
   gameOver = false;
 
   cellElements.forEach(cell => {
@@ -116,8 +116,7 @@ restartButton.addEventListener("click", () => {
   resultElement.innerText = ""
   player1Name = "";
   player2Name = "";
-  player1NameDisplayElement.innerText = "";
-  player2NameDisplayElement.innerText = "";
   player1NameElement.value = "";
   player2NameElement.value = "";
+  location.reload()
 })
